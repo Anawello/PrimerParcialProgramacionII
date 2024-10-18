@@ -53,8 +53,10 @@ El proyecto está compuesto por las siguientes clases y subclases:
     - `codServicio`: Código del servicio (6 caracteres, con validación).
     - `porcentajeDescuento`: Porcentaje de descuento aplicable al servicio.
     - `enPromocion`: Indica si el servicio está en promoción.
+    - `diaCreacion`: Indica si el día en el que se creo el servicio.
 - **Métodos Abstractos**:
     - `calcularPrecioFinal(LocalDate dia)`: Método abstracto para calcular el precio final del servicio, según el día.
+    - `validarCodServicio(String codServicio)`: Valida si el codigo dado cumple el requisito de longitud de 6 digitos, en caso de no cumplirlo lanza una excepción.
 
 ### 2. **Hospedaje** (Subclase de Servicio)
 
@@ -64,6 +66,7 @@ El proyecto está compuesto por las siguientes clases y subclases:
 - **Métodos**:
     - `calcularPrecioFinal(LocalDate dia)`: Aplica descuentos entre semana (lunes a viernes) si el servicio está en
       promoción.
+    - `isDiaPromocion(LocalDate dia)`: Verifica si el dia pertence al lapso de lunes a viernes.
 
 ### 3. **Gastronomía** (Subclase de Servicio)
 
@@ -74,6 +77,7 @@ El proyecto está compuesto por las siguientes clases y subclases:
 - **Métodos**:
     - `calcularPrecioFinal(LocalDate dia)`: Aplica el porcentaje de descuento si el día corresponde al día de descuento
       y si está en promoción.
+    - `isPromocion(LocalDate dia)`: Verifica si el dai dado aplica parta la promoción del servicio.
 
 ### 4. **Sistema** (Clase Principal)
 
@@ -88,5 +92,11 @@ El proyecto está compuesto por las siguientes clases y subclases:
     `agregarGastronomia(String codServicio, double porcentajeDescuento, boolean enPromocion, String gastronomia, double precio, int diaSemDesc)`:
     Agrega un servicio de gastronomía al sistema.
     -
+    `agregarGastronomia(String codServicio, LocalDate dia, double porcentajeDescuento, boolean enPromocion, String gastronomia, double precio, int diaSemDesc)`:
+    Agrega un servicio de gastronomía al sistema con un día de creacón especifico.
+    -
     `agregarHospedaje(String codServicio, double porcentajeDescuento, boolean enPromocion, String hospedaje, double precioPorNoche)`:
     Agrega un servicio de hospedaje al sistema.
+    -
+    `agregarHospedaje(String codServicio, LocalDate dia, double porcentajeDescuento, boolean enPromocion, String hospedaje, double precioPorNoche)`:
+    Agrega un servicio de gastronomía al sistema con un día de creacón especifico.
